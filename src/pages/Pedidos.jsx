@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 
-const API_PEDIDOS_URL = "http://api-java-proyecto-final-git:8080/api/pedidos";
-const API_ARTICULOS_URL = "http://api-java-proyecto-final-git:8080/api/articulos";
+const API_PEDIDOS_URL = "https://api-route-java-application.apps.focus-ocp-sno.datco.net/api/pedidos";
+const API_ARTICULOS_URL = "https://api-route-java-application.apps.focus-ocp-sno.datco.net/api/articulos";
 
 export default function Pedidos() {
   const [pedidos, setPedidos] = useState([]);
