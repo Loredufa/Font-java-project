@@ -113,6 +113,9 @@ export default function Pedidos() {
     }));
     const total = detalles.reduce((acc, d) => acc + d.subtotal, 0);
     const body = { ...form, total, detalles };
+    if (editando) {
+      console.log("PATCH pedido:", url, body);
+    }
     await fetch(url, {
       method: metodo,
       headers: { "Content-Type": "application/json" },
@@ -179,7 +182,19 @@ export default function Pedidos() {
             <input name="direccion_envio" value={form.direccion_envio} onChange={handleChange} className="form-control" placeholder="Dirección Envío" required />
           </div>
           <div className="col-md-2">
-            <input name="estado" value={form.estado} onChange={handleChange} className="form-control" placeholder="Estado" required />
+            <select
+              name="estado"
+              value={form.estado}
+              onChange={handleChange}
+              className="form-select"
+              required
+            >
+              <option value="">Seleccionar estado</option>
+              <option value="Pendiente">Pendiente</option>
+              <option value="Enviado">Enviado</option>
+              <option value="Entregado">Entregado</option>
+              <option value="Cancelado">Cancelado</option>
+            </select>
           </div>
           <div className="col-md-2">
             <input type="number" className="form-control" value={totalCalculado.toFixed(2)} readOnly tabIndex={-1} style={{ background: '#e9ecef' }} title="Total del pedido" />
